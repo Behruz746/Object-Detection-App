@@ -35,6 +35,21 @@
   z-index: 8;
 }
 
+.obj__data {
+  /* display: flex; */
+  text-align: left;
+  background-color: #777;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.obj__data h1 {
+  font-size: 17px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

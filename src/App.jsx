@@ -9,6 +9,7 @@ import { drawRect } from "./utilities"
 
 function App() {
   const [isBtnToggle, setIsBtnToggle] = useState(false)
+  const [isObjData, setIsObjData] = useState({})
   const webcamRef = useRef(null)
   const canvasRef = useRef(null)
 
@@ -54,6 +55,19 @@ function App() {
       // 5. TODO - Update drawing utility
       drawRect(obj, ctx)
       // console.log(obj, ctx)
+
+      obj.forEach((detal) => {
+        const [x, y, width, height] = detal["bbox"]
+        const text = detal["class"]
+
+        setIsObjData({
+          objX: x.toFixed(),
+          ObjY: y.toFixed(),
+          objWidth: width.toFixed(),
+          objHeight: height.toFixed(),
+          ObjClass: text,
+        })
+      })
     }
   }
 
@@ -64,6 +78,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <div className="obj__data">
+          <h1>object class: {isBtnToggle ? isObjData.ObjClass : "none"}</h1>
+          <h1>object x: {isBtnToggle ? isObjData.objX : 0}px</h1>
+          <h1>object y: {isBtnToggle ? isObjData.ObjY : 0}px</h1>
+          <h1>object width: {isBtnToggle ? isObjData.objWidth : 0}px</h1>
+          <h1>object height: {isBtnToggle ? isObjData.objHeight : 0}px</h1>
+        </div>
+
         {isBtnToggle ? (
           <>
             <Webcam
