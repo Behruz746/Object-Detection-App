@@ -7,6 +7,30 @@
   pointer-events: none;
 }
 
+.App-header {
+  padding: 0 15px;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.video__palyer {
+  max-width: 640px;
+  width: 100%;
+  height: 542px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 0 auto;
+  position: relative;
+}
+
 .button {
   padding: 10px;
   font-size: 17px;
@@ -16,34 +40,34 @@
   border: 0;
   outline: 0;
   cursor: pointer;
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
-.video__background {
-  width: 640px;
+.video__background,
+.webcam {
+  max-width: 640px;
+  width: 100%;
   height: 480px;
   background: #000;
   margin-left: auto;
   margin-right: auto;
-  position: absolute;
-  left: 0;
-  right: 0;
   text-align: center;
   z-index: 8;
 }
 
+canvas {
+  max-width: 640px;
+  width: 100%;
+  height: 480px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
 .obj__data {
-  /* display: flex; */
   text-align: left;
   background-color: #777;
   padding: 10px;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
 }
 
 .obj__data h1 {
@@ -56,17 +80,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
@@ -77,5 +90,49 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .App-header {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    padding: 0 10px;
+  }
+
+  .video__palyer {
+    max-width: 800px;
+  }
+
+  .video__background,
+  .webcam,
+  canvas {
+    max-width: 800px;
+  }
+
+  .obj__data {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .video__palyer {
+    max-width: 800px;
+  }
+
+  .video__background,
+  .webcam {
+    max-width: 800px;
+    height: 380px;
+  }
+
+  canvas {
+    top: 0;
+    max-width: 800px;
+    height: 380px;
+  }
+
+  .obj__data {
+    width: 100%;
   }
 }

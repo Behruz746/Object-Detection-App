@@ -86,52 +86,31 @@ function App() {
           <h1>object height: {isBtnToggle ? isObjData.objHeight : 0}px</h1>
         </div>
 
-        {isBtnToggle ? (
-          <>
-            <Webcam
-              ref={webcamRef}
-              muted={true}
-              audio={false}
-              mirrored={false}
-              style={{
-                position: "absolute",
-                marginLeft: "auto",
-                marginRight: "auto",
-                left: 0,
-                right: 0,
-                textAlign: "center",
-                zindex: 9,
-                width: 640,
-                height: 480,
-              }}
-            />
-            <canvas
-              ref={canvasRef}
-              style={{
-                position: "absolute",
-                marginLeft: "auto",
-                marginRight: "auto",
-                left: 0,
-                right: 0,
-                textAlign: "center",
-                zindex: 8,
-                width: 640,
-                height: 480,
-              }}
-            />
-          </>
-        ) : (
-          <div className="video__background"></div>
-        )}
+        <div className="video__palyer">
+          {isBtnToggle ? (
+            <>
+              <Webcam
+                ref={webcamRef}
+                muted={true}
+                audio={false}
+                mirrored={false}
+                className="webcam"
+              />
+              <canvas ref={canvasRef} />
+            </>
+          ) : (
+            <div className="video__background"></div>
+          )}
 
-        <button
-          type="button"
-          className="button"
-          style={{ backgroundColor: !isBtnToggle ? "#21fd6bff" : "#d00" }}
-          onClick={() => setIsBtnToggle(!isBtnToggle)}
-        >
-          {isBtnToggle ? "STOP VIDEO" : "START VIDEO"}
-        </button>
+          <button
+            type="button"
+            className="button"
+            style={{ backgroundColor: !isBtnToggle ? "#21fd6bff" : "#d00" }}
+            onClick={() => setIsBtnToggle(!isBtnToggle)}
+          >
+            {isBtnToggle ? "STOP VIDEO" : "START VIDEO"}
+          </button>
+        </div>
       </header>
     </div>
   )
